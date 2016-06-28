@@ -1,14 +1,14 @@
 # Chrome Extension Transport
 
 ### Example
-At `background.html` init listeners for
+At `background.html` init Messenger as SLAVE:
 ```javascript
 require(['messenger'], function (Messenger) {
     // ...
     // init Messenger as SLAVE
     var messenger = new Messenger();
 
-    // subscribe to events from popup.html
+    // subscribe to event from popup.html
     messenger.subscribe('popup.opened', function (data) {
         // When event will be published from popup.html:
         // data = { text: 'Popup opened!'}
@@ -18,17 +18,17 @@ require(['messenger'], function (Messenger) {
     messenger.publish('background.event', {text: 'Some text'});
 
     // ...
-})
+});
 ```
 
-On `popup.html` open we need to subscribe on background-events:
+At `popup.html` init Messenger as MASTER:
 ```javascript
 require(['messenger'], function (Messenger) {
     // ...
     // init Messenger as MASTER
     var messenger = new Messenger(true);
 
-    // subscribe to events from background.html
+    // subscribe to event from background.html
     messenger.subscribe('background.event', function (data) {
         // When event will be published from background.html:
         // data = { text: 'Some text' }

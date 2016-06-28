@@ -1,4 +1,5 @@
 # Chrome Extension Transport
+Transport for Chrome Extension message passing between `popup.html` and `background.html`.
 
 ### Example
 At `background.html` init Messenger as SLAVE:
